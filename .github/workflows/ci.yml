@@ -31,7 +31,7 @@ jobs:
           {
             echo "## ✅ Build & Tests Passed!"
             echo "Great job team 🚀"
-            echo "![Happy](https://i.imgur.com/1XKQ3.jpg)"   # any happy image URL
+            echo "![Happy]()"   # any happy image URL
           } >> $GITHUB_STEP_SUMMARY
 
       - name: 😢 Failure Message
@@ -40,5 +40,5 @@ jobs:
           {
             echo "## ❌ Tests Failed"
             echo "Something went wrong. Check your Hello & World files!"
-            echo "![Sad](https://i.imgur.com/w1X3F.jpg)"   # any sad image URL
+            echo "![Sad]"   # any sad image URL
           } >> $GITHUB_STEP_SUMMARY
