@@ -1,0 +1,44 @@
+name: React App CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test -- --watchAll=false
+
+      - name: 🎉 Success Message
+        if: success()
+        run: |
+          {
+            echo "## ✅ Build & Tests Passed!"
+            echo "Great job team 🚀"
+            echo "![Happy](https://i.imgur.com/1XKQ3.jpg)"   # any happy image URL
+          } >> $GITHUB_STEP_SUMMARY
+
+      - name: 😢 Failure Message
+        if: failure()
+        run: |
+          {
+            echo "## ❌ Tests Failed"
+            echo "Something went wrong. Check your Hello & World files!"
+            echo "![Sad](https://i.imgur.com/w1X3F.jpg)"   # any sad image URL
+          } >> $GITHUB_STEP_SUMMARY
